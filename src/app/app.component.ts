@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { MeetupCardComponent } from './components/meetup-card/meetup-card/meetup-card.component';
+import { MeetupListComponent } from './components/meetup-list/meetup-list/meetup-list.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, MeetupCardComponent, MeetupListComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
