@@ -1,0 +1,31 @@
+.meetup-card {
+    width: 700px;
+    background-color: var(--color-primary);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.meetup-card__title {
+    font-weight: bold;
+    font-size: 20px;
+    padding-bottom: 5px;
+}
+
+@media (max-width: 860px) {
+    .meetup-card {
+        max-width: 500px;
+    }
+}
+
+@media (max-width: 640px) {
+    .meetup-card {
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    .meetup-card {
+        max-width: 275px;
+    }
+}
+

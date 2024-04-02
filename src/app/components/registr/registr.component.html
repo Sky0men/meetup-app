@@ -1,0 +1,10 @@
+<div class="registration">
+    <h2>Форма регистрации</h2>
+    <div>Введите email</div>
+    <input type="text" class="registration__input" [(ngModel)]="cr_login" />
+    <div>Введите пароль</div>
+    <input type="text" class="registration__input" [(ngModel)]="cr_pass" />
+    <div>Введите имя пользователя</div>
+    <input type="text" class="registration__input" [(ngModel)]="cr_name" />
+    <button class="registration__button" (click)="tryRegister()">Зарегистрироваться</button>
+</div>

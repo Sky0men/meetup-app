@@ -1,0 +1,13 @@
+<div class="auth">
+    <h2>Форма авторизации</h2>
+    <div>Введите email</div>
+    <input type="text" class="auth__input" [(ngModel)]="login"/>
+    <div>Введите пароль</div>
+    <input type="text" class="auth__input" [(ngModel)]="pass"/>
+    <div class="auth__reg-form">
+        <a routerLink="registration">Регистрация</a>
+        <button class="auth__button" (click)="tryLogin()">Войти</button>
+    </div>
+</div>
+
+
