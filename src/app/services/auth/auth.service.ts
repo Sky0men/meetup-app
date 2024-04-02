@@ -64,6 +64,7 @@ private parseJwt(token: string): User {
       })
       .join('')
   );
+  console.log(JSON.parse(jsonPayload))
   return JSON.parse(jsonPayload);
 }
 }

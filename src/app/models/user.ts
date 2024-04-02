@@ -1,3 +1,14 @@
 export interface User {
-    name: string;
+    email: string;
+    exp: number;
+    iat: number;
+    id: number;
+    roles: [
+        {
+            id: number;
+            name: string;
+            createdAt: Date;
+            updatedAt: Date;
+        }
+    ];
 }

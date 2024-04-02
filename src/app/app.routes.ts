@@ -5,6 +5,8 @@ import { NgModule } from '@angular/core';
 import { DescriptionComponent } from './components/description/description.component';
 import { RegistrComponent } from './components/registr/registr.component';
 import { userGuard } from './guards/user.guard';
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
+import { adminGuard } from './guards/admin.guard';
 
 export const routes: Routes = [
     {
@@ -22,6 +24,10 @@ export const routes: Routes = [
     {
         path: 'auth/registration',
         component: RegistrComponent
+    },
+    {
+        path: 'adminPage',
+        component: AdminPanelComponent, canActivate: [adminGuard]
     }
 ];
 
