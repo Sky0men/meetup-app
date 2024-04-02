@@ -34,6 +34,10 @@ export class AuthService {
     )
   }
 
+  public logout(): void {
+    localStorage.removeItem('token');
+  }
+
   public register(email: string, password: string, name: string): Observable<Object> {
     this.body.email = email;
     this.body.password = password;
