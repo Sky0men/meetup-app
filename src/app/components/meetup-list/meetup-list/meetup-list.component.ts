@@ -3,13 +3,14 @@ import { Meetup } from '../../../models/meetup';
 import { MeetupService } from '../../../services/meetup/meetup.service';
 import { MeetupCardComponent } from "../../meetup-card/meetup-card/meetup-card.component";
 import { NgFor } from '@angular/common';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
     selector: 'app-meetup-list',
     standalone: true,
     templateUrl: './meetup-list.component.html',
     styleUrl: './meetup-list.component.css',
-    imports: [MeetupCardComponent, NgFor]
+    imports: [MeetupCardComponent, NgFor, RouterLink, RouterOutlet]
 })
 export class MeetupListComponent {
   meetups: Array<Meetup> = [

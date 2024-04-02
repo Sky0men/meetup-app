@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { 
+    margin: 0; 
+    background-color: var(--color-bg-medium);
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-primary: #6C38CC;
+    --color-hover: #4a278c;
+    --color-bg: #16171D;
+    --color-bg-medium: #1E1F29;
+    --color-bg-light: #2E2D3D;
+    --color-text: #fafafa;
+    --color-link-hover: #AFB2BF;
+    --color-stroke: #4d5064;
+    --color-secondary: #e47ad5;
+    --border-8: 8px;
+    --border-5: 5px;
+    --border-10: 10px;
+    --layout-width: 1172px;
+    --gradient: linear-gradient(158deg, #d77be5 10%, #be63e5 34.69%, #6c38cc 100%);
+    --color-footer: #101114; 
+}
+

@@ -1,0 +1,10 @@
+app-meetup-card {
+    color: var(--color-text);
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    justify-content: left;
+    align-items: center;
+    position: relative;
+    top: 100px;
+}
