@@ -1,8 +1,26 @@
 <section class="meetup-card">
     <div class="meetup-card__title">
-        {{MeetUpItem.name}}
+        {{MeetUpItem?.name}}
     </div>
     <div class="meetup-card__description">
-        {{MeetUpItem.description}}
+        Описание: {{MeetUpItem?.description}}
+    </div>
+    <div>
+        Время: {{MeetUpItem?.time | date}}
+    </div>
+    <div>
+        Место: {{MeetUpItem?.location}}
+    </div>
+    <div>
+        Целевая аудитория: {{MeetUpItem?.target_audience}}
+    </div>
+    <div>
+        Что нужно знать: {{MeetUpItem?.need_to_know}}
+    </div>
+    <div>
+        Что будет: {{MeetUpItem?.will_happen}}
+    </div>
+    <div>
+        Зачем приходить: {{MeetUpItem?.reason_to_come}}
     </div>
 </section>

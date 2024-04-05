@@ -1,4 +1,4 @@
-export interface Meetup {
+export interface MeetupReq {
     id: number,
     name: string,
     description: string,
@@ -10,18 +10,4 @@ export interface Meetup {
     time: string,
     duration: number,
     createdBy: number,
-    owner: {
-      id: number,
-      email: string,
-      password: string,
-      fio: string
-    },
-    users: [
-      {
-        id: number,
-        email: string,
-        password: string,
-        fio: string
-      }
-    ]
 }

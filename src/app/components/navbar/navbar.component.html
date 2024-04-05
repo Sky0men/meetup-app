@@ -2,6 +2,9 @@
     <a routerLink="auth">перейти на страницу авторизации</a>
     <a routerLink="">все meetups</a>
     <a>мои meetups</a>
+    @if(authService.isAdmin()) {
+        <a routerLink="usersList">Пользователи</a>
+    }
     <a routerLink="description">перейти к описанию</a>
     <button (click)="removeToken()" routerLink="auth">Выйти</button> 
 </div>

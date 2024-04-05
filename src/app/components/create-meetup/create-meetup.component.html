@@ -1,0 +1,23 @@
+<form [formGroup]="createForm">
+    <div class="create-form">
+        <div>название</div>
+        <input type="text" formControlName="name">
+        <div>описание</div>
+        <input type="text" formControlName="description">
+        <div>время</div>
+        <input type="text" formControlName="time">
+        <div>Продолжительность</div>
+        <input type="text" formControlName="duration">
+        <div>локация</div>
+        <input type="text" formControlName="location">
+        <div>целевая аудитория</div>
+        <input type="text" formControlName="target_audience">
+        <div>что нужно знать</div>
+        <input type="text" formControlName="need_to_know">
+        <div>что будет</div>
+        <input type="text" formControlName="will_happen">
+        <div>зачем приходить</div>
+        <input type="text" formControlName="reason_to_come">
+        <button (click)="createMeetUp()">кнопка</button>
+    </div>
+</form>

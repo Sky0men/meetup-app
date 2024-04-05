@@ -23,12 +23,18 @@ export class AuthService {
     return null
   }
 
+  public isAdmin(): boolean {
+    if (this.user?.roles[0].id == 1) {
+      return true
+    } 
+    return false
+  }
+
   public login(email: string, password: string): Observable<Object> {
     return this.HttpClient.post<{token: string}>(`${this.apiUrl}auth/login`, JSON.stringify({email, password}))
     .pipe(
       map((response) => {
         localStorage.setItem('token', response.token);
-        console.log(response)
         return true;
       })
     )

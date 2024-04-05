@@ -46,3 +46,11 @@ a {
     text-decoration: none;
     color: var(--color-hover);
 }
+
+input.ng-touched.ng-invalid{
+    border:solid 3px red;
+}
+
+.alert {
+    color: red;
+}

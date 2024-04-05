@@ -1,13 +1,22 @@
-<div class="auth">
-    <h2>Форма авторизации</h2>
-    <div>Введите email</div>
-    <input type="text" class="auth__input" [(ngModel)]="login"/>
-    <div>Введите пароль</div>
-    <input type="text" class="auth__input" [(ngModel)]="pass"/>
-    <div class="auth__reg-form">
-        <a routerLink="registration">Регистрация</a>
-        <button class="auth__button" (click)="tryLogin()">Войти</button>
-    </div>
-</div>
+<form [formGroup]="loginForm">
+    <div class="auth">
+        <h2>Форма авторизации</h2>
+        <div>Введите email</div>
+        <input type="text" class="auth__input" formControlName="userEmail" />
+        @if(loginForm.controls["userEmail"].invalid && loginForm.controls["userEmail"].touched){
+            <div class="alert">Некорректный email</div>
+        }
+        
+        <div>Введите пароль</div>
+        <input type="text" class="auth__input" formControlName="userPass"/>
+        @if(loginForm.controls["userPass"].invalid && loginForm.controls["userPass"].touched){
+            <div class="alert">Обязательное поле</div>
+        }
 
+        <div class="auth__reg-form">
+            <a routerLink="registration">Регистрация</a>
+            <button class="auth__button" (click)="tryLogin()">Войти</button>
+        </div>
+    </div>
+</form>    
 

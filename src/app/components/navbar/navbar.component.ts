@@ -17,4 +17,12 @@ export class NavbarComponent {
   public removeToken() {
      this.authService.logout()
    }
+
+  public userIsAdmin(): number | undefined {
+    if (this.authService.isAdmin() == true) {
+      return this.authService.user?.id
+    } 
+      return undefined
+  } 
 }
+

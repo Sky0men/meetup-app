@@ -1,0 +1,15 @@
+<section class="user-card">
+    <div class="user-card__title">
+        {{userItem?.id}}
+    </div>
+    <div class="user-card__email">
+        {{userItem?.email}}
+    </div>
+    <div>
+        {{userItem?.password}}
+    </div>
+    <div>
+        {{userItem?.fio}}
+    </div>
+    <app-choose-status [roleItem]="role" (choosenStatus)="getUserRole()"></app-choose-status>
+</section>
