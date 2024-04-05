@@ -7,6 +7,8 @@ import { RegistrComponent } from './components/registr/registr.component';
 import { userGuard } from './guards/user.guard';
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 import { adminGuard } from './guards/admin.guard';
+import { UsersListComponent } from './components/users-list/users-list.component';
+import { CreateMeetupComponent } from './components/create-meetup/create-meetup.component';
 
 export const routes: Routes = [
     {
@@ -28,6 +30,14 @@ export const routes: Routes = [
     {
         path: 'adminPage',
         component: AdminPanelComponent, canActivate: [adminGuard]
+    },
+    {
+        path: 'usersList',
+        component: UsersListComponent, canActivate: [adminGuard]
+    },
+    {
+        path: 'createMeetup',
+        component: CreateMeetupComponent
     }
 ];
 

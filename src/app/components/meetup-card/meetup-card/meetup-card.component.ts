@@ -1,21 +1,16 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Meetup } from '../../../models/meetup';
-
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-meetup-card',
   standalone: true,
-  imports: [],
+  imports: [DatePipe],
   templateUrl: './meetup-card.component.html',
   styleUrl: './meetup-card.component.css'
 })
 export class MeetupCardComponent {
-  @Input() MeetUpItem = new Meetup();
-  @Output() deleteMeetUp = new EventEmitter();
-
-  deleteItem() {
-    this.deleteMeetUp.next(this.MeetUpItem);
-  }
+  @Input() MeetUpItem: Meetup | undefined;
 }
 
 

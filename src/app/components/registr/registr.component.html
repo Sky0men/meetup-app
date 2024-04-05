@@ -1,10 +1,24 @@
-<div class="registration">
-    <h2>Форма регистрации</h2>
-    <div>Введите email</div>
-    <input type="text" class="registration__input" [(ngModel)]="cr_login" />
-    <div>Введите пароль</div>
-    <input type="text" class="registration__input" [(ngModel)]="cr_pass" />
-    <div>Введите имя пользователя</div>
-    <input type="text" class="registration__input" [(ngModel)]="cr_name" />
-    <button class="registration__button" (click)="tryRegister()">Зарегистрироваться</button>
-</div>
+<form [formGroup]="registrForm">
+    <div class="registration">
+        <h2>Форма регистрации</h2>
+        <div>Введите email</div>
+        <input type="text" class="registration__input" formControlName="cr_userEmail" />
+        @if(registrForm.controls["cr_userEmail"].invalid && registrForm.controls["cr_userEmail"].touched){
+            <div class="alert">Некорректный email</div>
+        }
+        
+        <div>Введите пароль</div>
+        <input type="text" class="registration__input" formControlName="cr_userPass" />
+        @if(registrForm.controls["cr_userPass"].invalid && registrForm.controls["cr_userPass"].touched){
+            <div class="alert">Обязательное поле</div>
+        }
+        <div>Введите имя пользователя</div>
+
+        <input type="text" class="registration__input" formControlName="cr_userName" />
+        @if(registrForm.controls["cr_userName"].invalid && registrForm.controls["cr_userName"].touched){
+            <div class="alert">Обязательное поле</div>
+        }
+
+        <button class="registration__button" (click)="tryRegister()">Зарегистрироваться</button>
+    </div>
+</form>
