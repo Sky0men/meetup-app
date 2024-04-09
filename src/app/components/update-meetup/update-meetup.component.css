@@ -48,7 +48,14 @@ input[type='date']::-webkit-calendar-picker-indicator {
     filter: invert(100%);
 }
 
-.create-form__button {
+.create-form__btns {
+    margin-top: 20px;
+    margin-bottom: 50px;
+    display: flex;
+    gap: 50px;
+}
+
+.create-form__btnUpdate {
     border-radius: 10px;
     padding: 12px 30px;
     cursor: pointer;
@@ -60,3 +67,4 @@ input[type='date']::-webkit-calendar-picker-indicator {
     background: var(--color-primary);
     margin-left: 275px;
 }
+

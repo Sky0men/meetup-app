@@ -1,0 +1,10 @@
+select {
+    background-color: var(--color-hover);
+    color: var(--color-text);
+    width: 100px;
+    border-radius: 15px;
+    font-family: 'Fira Sans', sans-serif;
+    outline: none;
+    border: none;
+    padding: 5px;
+}

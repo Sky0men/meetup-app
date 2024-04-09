@@ -1,12 +1,12 @@
-<form [formGroup]="createForm">
+<form [formGroup]="updateForm">
     <div class="create-form">
         <section class="create-form__name">
             <label>Название</label>
-            <input type="text" formControlName="name">
+            <input type="text" formControlName="name" [value]="MeetUpItem?.name">
         </section>
         <section class="create-form__description">
             <label>Описание</label>
-            <input type="text" formControlName="description">
+            <input type="text" formControlName="description" [value]="MeetUpItem?.description">
         </section>
         <section class="create-form__time">
             <label>Дата</label>
@@ -36,6 +36,7 @@
             <label>Зачем приходить</label>
             <textarea type="text" formControlName="reason_to_come"></textarea>
         </section>
-        <button class="create-form__button" (click)="createMeetUp()">Создать митап</button>
+            <button class="create-form__btnUpdate" (click)="updateMeetup()">Обновить митап</button>
     </div>
 </form>
+

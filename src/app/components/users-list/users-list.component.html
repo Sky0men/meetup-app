@@ -1,9 +1,12 @@
 <h2>Список пользователей</h2>
+<div *ngIf="">
+    <app-spinner></app-spinner>
+</div>
 <app-user-card
-*ngFor="let user of users"
+*ngFor="let user of users" 
 [userItem] = "user"
 [role]="userRoles"
 >
 </app-user-card>
-<app-spinner *ngIf="bool"></app-spinner>
 
+<router-outlet></router-outlet>

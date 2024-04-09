@@ -1,8 +1,10 @@
-<app-spinner></app-spinner>
+<!-- <app-spinner></app-spinner> -->
+<!-- <app-search></app-search> -->
+<input class="search-form" type="search" [(ngModel)]="SearchQuery" placeholder="название, ключевое слово, дата">
 <app-meetup-card
-  *ngFor="let meetup of meetups"
-  [MeetUpItem]="meetup"
->
+  *ngFor="let meetup of meetups | filter: SearchQuery" 
+  [MeetUpItem]="meetup" 
+  >
 </app-meetup-card>
 <button routerLink="createMeetup">Создать митап</button>
 

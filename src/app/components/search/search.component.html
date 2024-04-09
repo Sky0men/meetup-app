@@ -1,0 +1,17 @@
+<section class="search">
+    
+    <div class="search-form">
+        <input type="search" [(ngModel)]="searchQuery" placeholder="название, ключевое слово, дата">
+        <button (click)="searchMeetUp()">поиск</button>
+    </div>
+    <div class="filter" *ngIf="searchRes.length > 0">
+            <ul *ngFor="let meetup of searchRes | filter: searchQuery">
+                <li>{{meetup.name}}</li>
+                <li>{{meetup.description}}</li>
+                <li>{{meetup.time | date}}</li>
+                <li>{{meetup.owner.fio}}</li>
+                <li>{{meetup.duration}}</li>
+                <li>{{meetup.reason_to_come}}</li>
+            </ul>
+    </div>
+</section>

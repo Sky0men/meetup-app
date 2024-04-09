@@ -28,7 +28,7 @@ export class AuthService {
       return true
     } 
     return false
-  }
+  } 
 
   public login(email: string, password: string): Observable<Object> {
     return this.HttpClient.post<{token: string}>(`${this.apiUrl}auth/login`, JSON.stringify({email, password}))
