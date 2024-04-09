@@ -1,35 +1,46 @@
 import { Component, inject } from '@angular/core';
 import { MeetupService } from '../../services/meetup/meetup.service';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { RouterOutlet } from '@angular/router';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, RouterOutlet } from '@angular/router';
 import { MeetupReq } from '../../models/meetupreq';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-create-meetup',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterOutlet],
+  imports: [ReactiveFormsModule, RouterOutlet, DatePipe],
   templateUrl: './create-meetup.component.html',
   styleUrl: './create-meetup.component.css'
 })
 export class CreateMeetupComponent {
   meetups: MeetupReq | undefined;
+  date: Date = new Date();
   
-  constructor(public meetupService: MeetupService) { }
+  constructor(public meetupService: MeetupService, public router: Router) { }
 
   createForm: FormGroup = new FormGroup({
-    "name": new FormControl(""),
-    "description": new FormControl(""),
-    "time": new FormControl(Date.now()),
-    "location": new FormControl(""),
-    "target_audience": new FormControl(""),
-    "need_to_know": new FormControl(""),
-    "will_happen": new FormControl(""),
-    "reason_to_come": new FormControl(""),
-    "duration": new FormControl(1)
+    "name": new FormControl("", Validators.required),
+    "description": new FormControl("", Validators.required),
+    "time": new FormControl(this.convertDate(), [
+      Validators.required,
+    
+    ]),
+    "location": new FormControl("", Validators.required),
+    "target_audience": new FormControl("", Validators.required),
+    "need_to_know": new FormControl("", Validators.required),
+    "will_happen": new FormControl("", Validators.required),
+    "reason_to_come": new FormControl("", Validators.required),
+    "duration": new FormControl(1, Validators.required)
   })
+
+  convertDate() {
+    this.date.getTime()
+  }
 
   createMeetUp() {
     this.meetupService.createMeetup(this.createForm.value).subscribe(meetup => this.meetups = meetup)
     console.log(this.createForm.value)
+    this.router.navigate([''])
   }
+
 }

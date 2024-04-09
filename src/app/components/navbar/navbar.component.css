@@ -22,7 +22,7 @@ button {
     border: none;
     font-family: 'Fira Sans', sans-serif;
     color: var(--color-text);
-    background: var(--color-primary);
+    background: var(--color-secondary);
 }
 
 button:hover {

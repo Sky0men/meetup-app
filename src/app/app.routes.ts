@@ -9,6 +9,17 @@ import { AdminPanelComponent } from './components/admin-panel/admin-panel.compon
 import { adminGuard } from './guards/admin.guard';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { CreateMeetupComponent } from './components/create-meetup/create-meetup.component';
+import { UpdateMeetupComponent } from './components/update-meetup/update-meetup.component';
+import { UpdateUserComponent } from './components/update-user/update-user.component';
+import { updateGuard } from './guards/update.guard';
+import { MyMeetupsComponent } from './components/my-meetups/my-meetups.component';
+
+export const itemRoutes: Routes = [
+    {
+        path: 'updateUser/:id',
+        component: UpdateUserComponent,
+    }
+]
 
 export const routes: Routes = [
     {
@@ -33,13 +44,25 @@ export const routes: Routes = [
     },
     {
         path: 'usersList',
-        component: UsersListComponent, canActivate: [adminGuard]
+        component: UsersListComponent, canActivate: [adminGuard],
+        children: itemRoutes
     },
     {
         path: 'createMeetup',
         component: CreateMeetupComponent
-    }
+    },
+    {
+        path: 'updateMeetup/:id',
+        component: UpdateMeetupComponent, 
+        
+    },
+    {
+        path: 'myMeetups',
+        component: MyMeetupsComponent, 
+        
+    },
 ];
+
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],

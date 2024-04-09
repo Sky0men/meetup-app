@@ -1,15 +1,14 @@
 <section class="user-card">
-    <div class="user-card__title">
-        {{userItem?.id}}
+    <div class="user-card__input">
+        <input type="text" disabled [(ngModel)]="userItem.id" value="userItem.id"/>
+         <input type="text" [(ngModel)]="userData.email" value="userItem.email"/>
+         <input type="password" [(ngModel)]="userData.password" value="userItem.password"/>
+         <input type="text" [(ngModel)]="userData.fio" value="userItem.fio"/>    
     </div>
-    <div class="user-card__email">
-        {{userItem?.email}}
-    </div>
-    <div>
-        {{userItem?.password}}
-    </div>
-    <div>
-        {{userItem?.fio}}
-    </div>
-    <app-choose-status [roleItem]="role" (choosenStatus)="getUserRole()"></app-choose-status>
+    <section class="user-card__fio">
+        
+        <app-choose-status [roleItem]="role" (choosenStatus)="updateRole()">{{userItem.roles[0].name}}</app-choose-status>
+        <button (click)="deleteUser()">Удалить пользователя</button>
+        <button (click)="updateUser()">Изменить</button>
+    </section>
 </section>

@@ -1,12 +1,20 @@
 <section class="meetup-card">
-    <div class="meetup-card__title">
-        {{MeetUpItem?.name}}
-    </div>
-    <div class="meetup-card__description">
+    <section class="meetup-card__header">
+        <section class="meetup-card__header-refs">
+            <a class="meetup-card__title" routerLink="updateMeetup/{{MeetUpItem?.id}}">
+                {{MeetUpItem?.name}}
+            </a>
+            <div>Подписчики: {{MeetUpItem?.users?.length}}</div>
+        </section>
+            @if (isOwner()) {
+                <a class="meetup-card__title" routerLink="updateMeetup/{{MeetUpItem?.id}}">Редактировать митап</a>
+            }
+    </section>
+    <div>
         Описание: {{MeetUpItem?.description}}
     </div>
     <div>
-        Время: {{MeetUpItem?.time | date}}
+        Дата: {{MeetUpItem?.time | date}}
     </div>
     <div>
         Место: {{MeetUpItem?.location}}
@@ -23,4 +31,12 @@
     <div>
         Зачем приходить: {{MeetUpItem?.reason_to_come}}
     </div>
+    <div>
+        автор: {{MeetUpItem?.owner?.fio}}
+    </div>
+    @if (isOwner()) {
+        <button (click)="deleteMeetup()">Удалить</button>
+    }
+    <button (click)="subscrUser()">Подписаться</button>
+    <button (click)="unSubscrUser()">Отписаться</button>
 </section>

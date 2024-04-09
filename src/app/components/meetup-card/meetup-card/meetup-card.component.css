@@ -3,12 +3,41 @@
     background-color: var(--color-primary);
     border-radius: 20px;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .meetup-card__title {
     font-weight: bold;
     font-size: 20px;
     padding-bottom: 5px;
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+.meetup-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.meetup-card__header-refs {
+    display: flex;
+    gap: 30px;
+    
+}
+
+button {
+    border-radius: 10px;
+    padding: 10px 75px;
+    cursor: pointer;
+    transition: background 0.25s;
+    font-size: 16px;
+    border: none;
+    font-family: 'Fira Sans', sans-serif;
+    color: var(--color-text);
+    background: var(--color-secondary);
 }
 
 @media (max-width: 860px) {

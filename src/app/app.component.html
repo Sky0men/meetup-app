@@ -1,2 +1,5 @@
 <app-navbar></app-navbar>
+<div  *ngIf="showLoader$ | async as showLoader">
+    <app-spinner *ngIf="showLoader"></app-spinner>
+</div>
 <router-outlet></router-outlet>
