@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import {MatButtonModule} from '@angular/material/button';
@@ -11,7 +11,8 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
   imports: [RouterOutlet, MatButtonModule, RouterLink, ReactiveFormsModule],
   providers: [HttpClientModule, AuthService],
   templateUrl: './auth.component.html',
-  styleUrl: './auth.component.css'
+  styleUrl: './auth.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AuthComponent {
   
@@ -27,12 +28,13 @@ export class AuthComponent {
 
   private router: Router = inject(Router);
 
-  constructor(public auth: AuthService ) {}
+  constructor(public auth: AuthService, private cdr: ChangeDetectorRef ) {}
 
   public tryLogin() {
     this.auth.login(this.loginForm.controls['userEmail'].value, this.loginForm.controls['userPass'].value).subscribe((user) => {
       if (user) {
         this.router.navigate([''])
+        this.cdr.markForCheck()
       }
     })
   }

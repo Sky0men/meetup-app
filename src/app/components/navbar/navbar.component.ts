@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
 import { AuthService } from '../../services/auth/auth.service';
 import { RouterLink } from '@angular/router';
 import { User } from '../../models/user';
@@ -9,7 +9,7 @@ import { Meetup } from '../../models/meetup';
   standalone: true,
   imports: [RouterLink],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css'
+  styleUrl: './navbar.component.css', 
 })
 export class NavbarComponent {
   @Input() userItem: User | undefined;

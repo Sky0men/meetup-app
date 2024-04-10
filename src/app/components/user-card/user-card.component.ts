@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, NgModule, Output } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, NgModule, Output } from '@angular/core';
 import { UserList } from '../../models/user-list';
 import { AdminService } from '../../services/admin/admin.service';
 import { UserRole } from '../../models/user-role';
@@ -15,7 +15,8 @@ import { AuthService } from '../../services/auth/auth.service';
     providers: [],
     templateUrl: './user-card.component.html',
     styleUrl: './user-card.component.css',
-    imports: [NgFor, FormsModule, ChooseStatusComponent, RouterLink, RouterOutlet, FormsModule,]
+    imports: [NgFor, FormsModule, ChooseStatusComponent, RouterLink, RouterOutlet, FormsModule,],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserCardComponent  {
 getUserRole() {
@@ -38,12 +39,16 @@ throw new Error('Method not implemented.');
     'fio': this.userItem.fio 
   }
   @Input() role: UserRole[] = [];
-  @Output() changeStatus = new EventEmitter();
 
-  constructor(public adminService: AdminService, public auth: AuthService) {}
+  constructor(public adminService: AdminService, public auth: AuthService, private cdr: ChangeDetectorRef) {}
 
-  updateRole() {
-    this.adminService.updateRole(this.userItem.roles[0].name, this.userItem.id).subscribe()
+  getCurrentUserRole() {
+    return this.userItem.roles[0].name;
+  }
+
+  updateRole(curRole: string) {
+    this.adminService.updateRole(curRole, this.userItem.id).subscribe();
+    this.cdr.markForCheck()
   }
 
   ngOnInit() {
@@ -51,15 +56,20 @@ throw new Error('Method not implemented.');
       'email': this.userItem.email,
       'password': this.userItem.password,
       'fio': this.userItem.fio 
-    }
+    };
+    console.log(
+      `МЫЛО: ${this.userItem.email}, НУЛЕВАЯ РОЛЬ: ${this.userItem.roles[0].name}`
+    );
   }
 
   deleteUser() {
     this.adminService.deleteUser(this.userItem?.id).subscribe()
+    this.cdr.markForCheck()
   }
 
   updateUser() {
     this.adminService.updateUser(this.userItem.id, this.userData.email, this.userData.password, this.userData.fio).subscribe()
+    this.cdr.markForCheck()
   }
 }
 

@@ -1,5 +1,5 @@
-<select [(ngModel)]="UserItem" (change)="returnRole()">
-    <option value="{{item}}" *ngFor="let item of roleItem">
+<select [(ngModel)]="currentRole" (change)="onChangeRole()">
+    <option [ngValue]="item.name" *ngFor="let item of roleItem">
         {{item.name}}
     </option>
 </select>

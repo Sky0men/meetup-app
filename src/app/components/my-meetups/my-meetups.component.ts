@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
 import { User } from '../../models/user';
 import { MeetupService } from '../../services/meetup/meetup.service';
 import { Subscription } from 'rxjs';
@@ -12,19 +12,21 @@ import { MeetupCardComponent } from "../meetup-card/meetup-card/meetup-card.comp
     standalone: true,
     templateUrl: './my-meetups.component.html',
     styleUrl: './my-meetups.component.css',
-    imports: [RouterOutlet, MeetupCardComponent]
+    imports: [RouterOutlet, MeetupCardComponent],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MyMeetupsComponent {
   id: number = 0;
   public subscription: Subscription;
   meetups: Meetup[] = [];
   
-  constructor(public meetupService: MeetupService, public auth: AuthService,  public router: Router, public activateRoute: ActivatedRoute) { 
+  constructor(public meetupService: MeetupService, public auth: AuthService, private cdr: ChangeDetectorRef,  public router: Router, public activateRoute: ActivatedRoute) { 
     this.subscription = activateRoute.params.subscribe(params => this.id = params['id']) }
 
     getMeetUps() {
       this.meetupService.getAllMeetUps()
       .subscribe(meetups => this.meetups = meetups)
+      this.cdr.markForCheck();
     }
 
     ngOnInit() {
