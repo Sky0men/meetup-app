@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AdminService } from '../../services/admin/admin.service';
@@ -10,7 +10,8 @@ import { UserList } from '../../models/user-list';
   standalone: true,
   imports: [RouterOutlet, ReactiveFormsModule],
   templateUrl: './update-user.component.html',
-  styleUrl: './update-user.component.css'
+  styleUrl: './update-user.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UpdateUserComponent {
   id: number = 0;

@@ -1,6 +1,6 @@
 <h2>Список пользователей</h2>
-<div *ngIf="">
-    <app-spinner></app-spinner>
+<div *ngIf="showLoader$ | async as showLoader">
+    <app-spinner *ngIf="showLoader"></app-spinner>
 </div>
 <app-user-card
 *ngFor="let user of users" 

@@ -1,4 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, Output } from '@angular/core';
 import { MeetupReq } from '../../models/meetupreq';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
@@ -11,7 +11,8 @@ import { Meetup } from '../../models/meetup';
   standalone: true,
   imports: [ReactiveFormsModule, RouterOutlet],
   templateUrl: './update-meetup.component.html',
-  styleUrl: './update-meetup.component.css'
+  styleUrl: './update-meetup.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UpdateMeetupComponent {
   meetups: MeetupReq | undefined;
@@ -21,7 +22,7 @@ export class UpdateMeetupComponent {
   
   date: Date = new Date();
   
-  constructor(public meetupService: MeetupService, public router: Router, public activateRoute: ActivatedRoute) { 
+  constructor(public meetupService: MeetupService, public router: Router, public activateRoute: ActivatedRoute, private cdr: ChangeDetectorRef) { 
     this.subscription = activateRoute.params.subscribe(params => this.id = params['id'])
   }
 
@@ -47,5 +48,6 @@ export class UpdateMeetupComponent {
   updateMeetup() {
     this.meetupService.updateMeetUp(this.id, this.updateForm.value).subscribe()
     this.router.navigate([''])
+    this.cdr.markForCheck()
   }
 }

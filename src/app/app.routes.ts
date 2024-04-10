@@ -12,7 +12,7 @@ import { CreateMeetupComponent } from './components/create-meetup/create-meetup.
 import { UpdateMeetupComponent } from './components/update-meetup/update-meetup.component';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 import { updateGuard } from './guards/update.guard';
-import { MyMeetupsComponent } from './components/my-meetups/my-meetups.component';
+
 
 export const itemRoutes: Routes = [
     {
@@ -49,16 +49,11 @@ export const routes: Routes = [
     },
     {
         path: 'createMeetup',
-        component: CreateMeetupComponent
+        component: CreateMeetupComponent, canActivate: [userGuard] 
     },
     {
         path: 'updateMeetup/:id',
         component: UpdateMeetupComponent, 
-        
-    },
-    {
-        path: 'myMeetups',
-        component: MyMeetupsComponent, 
         
     },
 ];

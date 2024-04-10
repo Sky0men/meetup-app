@@ -8,10 +8,11 @@ import { MeetupService } from '../services/meetup/meetup.service';
 
 export const updateGuard: CanActivateFn = (route, state) => {
   const authService: AuthService = inject(AuthService);
-  const MeetUpCard: MeetupCardComponent = inject(MeetupCardComponent)
+  const meetUpService: MeetupService = inject(MeetupService)
   const router: Router = inject(Router);
+  console.log(meetUpService.isOwner())
   
-  if (MeetUpCard.isOwner()) {
+  if (meetUpService.isOwner()) {
     return true;
   } 
   alert('вы не создавали этот митап');

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
 import { MeetupService } from '../../services/meetup/meetup.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterOutlet } from '@angular/router';
@@ -10,13 +10,14 @@ import { DatePipe } from '@angular/common';
   standalone: true,
   imports: [ReactiveFormsModule, RouterOutlet, DatePipe],
   templateUrl: './create-meetup.component.html',
-  styleUrl: './create-meetup.component.css'
+  styleUrl: './create-meetup.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CreateMeetupComponent {
   meetups: MeetupReq | undefined;
   date: Date = new Date();
   
-  constructor(public meetupService: MeetupService, public router: Router) { }
+  constructor(public meetupService: MeetupService, public router: Router, private cdr: ChangeDetectorRef) { }
 
   createForm: FormGroup = new FormGroup({
     "name": new FormControl("", Validators.required),
@@ -41,6 +42,7 @@ export class CreateMeetupComponent {
     this.meetupService.createMeetup(this.createForm.value).subscribe(meetup => this.meetups = meetup)
     console.log(this.createForm.value)
     this.router.navigate([''])
+    this.cdr.markForCheck()
   }
 
 }

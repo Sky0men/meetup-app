@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -6,7 +6,8 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [RouterOutlet],
   templateUrl: './admin-panel.component.html',
-  styleUrl: './admin-panel.component.css'
+  styleUrl: './admin-panel.component.css',
+  
 })
 export class AdminPanelComponent {
 

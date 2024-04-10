@@ -16,9 +16,9 @@ export class MeetupService {
   private _refreshMeetup = new Subject<void>();
   private unsubscribe$ = new Subject<void>();
   meetups$ = new BehaviorSubject<Meetup[]>([])
+  MeetUpItem: Meetup | undefined;
   
   constructor(public loaderService: LoadingService) { }
-
 
   unsubscribe() {
     this.unsubscribe$.next();
@@ -33,7 +33,8 @@ export class MeetupService {
     return this.HttpClient.get<Meetup[]>(`${this.apiUrl}meetup`)
     .pipe(
       delay(2000),
-      tap(() => {
+      tap((meetups) => {
+        this.meetups$.next(meetups)
         this.loaderService.loadingOff();
       }),
       takeUntil(this.unsubscribe$)
@@ -94,6 +95,13 @@ export class MeetupService {
         this._refreshMeetup.next();
       })
     )
+  }
+
+  isOwner() {
+    if (this.MeetUpItem?.createdBy === this.MeetUpItem?.id) {
+      return true
+    }
+      return false
   }
 
   // public addMeetup(entity: Meetup) {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 
@@ -7,7 +7,8 @@ import { AsyncPipe } from '@angular/common';
   standalone: true,
   imports: [RouterOutlet, AsyncPipe],
   templateUrl: './spinner.component.html',
-  styleUrl: './spinner.component.css'
+  styleUrl: './spinner.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SpinnerComponent {
   

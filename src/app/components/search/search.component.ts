@@ -1,4 +1,4 @@
-import { Component, NgModule, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, NgModule, Output } from '@angular/core';
 import { MeetupService } from '../../services/meetup/meetup.service';
 import { MeetupReq } from '../../models/meetupreq';
 import { DatePipe, NgFor, NgIf } from '@angular/common';
@@ -13,7 +13,8 @@ import { MeetupCardComponent } from "../meetup-card/meetup-card/meetup-card.comp
     standalone: true,
     templateUrl: './search.component.html',
     styleUrl: './search.component.css',
-    imports: [NgFor, NgIf, RouterLink, FormsModule, FilterPipe, MeetupCardComponent, DatePipe]
+    imports: [NgFor, NgIf, RouterLink, FormsModule, FilterPipe, MeetupCardComponent, DatePipe],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchComponent {
   @Output() searchQuery: string = ''

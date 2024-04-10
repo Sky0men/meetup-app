@@ -37,6 +37,6 @@
     @if (isOwner()) {
         <button (click)="deleteMeetup()">Удалить</button>
     }
-    <button (click)="subscrUser()">Подписаться</button>
-    <button (click)="unSubscrUser()">Отписаться</button>
+    <button [style.display]="isOwner() ? 'none':'block'" (click)="subscrUser()">Подписаться</button>
+    <button [style.display]="isOwner() ? 'none':'block'" (click)="unSubscrUser()">Отписаться</button>
 </section>

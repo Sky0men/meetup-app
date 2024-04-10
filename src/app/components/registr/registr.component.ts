@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -9,7 +9,8 @@ import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angula
   standalone: true,
   imports: [RouterOutlet, HttpClientModule, ReactiveFormsModule],
   templateUrl: './registr.component.html',
-  styleUrl: './registr.component.css'
+  styleUrl: './registr.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RegistrComponent {
 
@@ -28,7 +29,7 @@ export class RegistrComponent {
 
   private router: Router = inject(Router);
 
-  constructor(public auth: AuthService ) {}
+  constructor(public auth: AuthService, private cdr: ChangeDetectorRef) {}
 
   public tryRegister() {
     this.auth.register(
@@ -39,6 +40,7 @@ export class RegistrComponent {
       .subscribe((user) => {
       if (user) {
         this.router.navigate([''])
+        this.cdr.markForCheck()
       }
     })
   }
